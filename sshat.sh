@@ -51,7 +51,7 @@ function echo_msg {
 function command_txt {
     if [ "$@" = "/quit" ]
     then
-        tmux -L chat kill-server
+        tmux -L chat kill-session
         exit 0
     elif [ "$@" = "/help" ]
     then
@@ -76,8 +76,6 @@ function input_txt {
     fi
 }
 
-create_talk
-random_color
 
 if [ "$1" = "out" ]
 then
@@ -85,15 +83,15 @@ then
     tail -F $talk_file 2> /dev/null
 elif [ "$1" = "in" ]
 then
+    create_talk
+    random_color
     while true
     do
         echo -ne "$black_bg --> $color_off"
-        read line
+        IFS= read -e -p " " line
         sanitized_line=$(tr -d "[:cntrl:]" <<< "$line")
         input_txt "$sanitized_line"
     done
 else
-    tmux -L chat new-session -d
-    tmux -L chat source-file /tmux.conf
-    tmux -L chat kill-server
+    tmux -L chat new $0 'out'  \; splitw -v -l 8 $0 'in' \; unbind -a
 fi
