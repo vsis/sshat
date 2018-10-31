@@ -11,6 +11,6 @@ ENV LANGUAGE en_US.UTF-8
 
 EXPOSE 22
 
-ADD ./talk.sh /talk.sh
+ADD ./sshat.sh /sshat.sh
 ADD ./tmux.conf /tmux.conf
 ADD ./motd /motd

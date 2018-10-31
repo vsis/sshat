@@ -113,7 +113,7 @@ AcceptEnv LANG LC_*
 
 # override default of no subsystems
 #Subsystem	sftp	/usr/lib/openssh/sftp-server
-ForceCommand LC_ALL=en_US.UTF-8 /talk.sh
+ForceCommand LC_ALL=en_US.UTF-8 /sshat.sh
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs

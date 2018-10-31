@@ -93,7 +93,7 @@ then
         input_txt "$sanitized_line"
     done
 else
-    tmux -L chat new-session -d 
-    tmux -L chat source-file ./tmux.conf
+    tmux -L chat new-session -d
+    tmux -L chat source-file /tmux.conf
     tmux -L chat kill-server
 fi
