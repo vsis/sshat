@@ -72,7 +72,7 @@ function input_txt {
     then
         command_txt "$@"
     else
-        echo_msg $@
+        echo_msg "$@"
     fi
 }
 
